@@ -3,7 +3,7 @@ package com.bridgelabz.analyzer;
 import java.util.Scanner;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MoodAnalyserException{
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter 1st message: ");
         String text1 = scanner.nextLine();
@@ -15,9 +15,28 @@ public class Test {
         MoodAnalyser moodAnalyser2 = new MoodAnalyser(text2);
         MoodAnalyser moodAnalyser3 = new MoodAnalyser(text3);
 
-        System.out.println("Mood: " + moodAnalyser1.analyserMood());
-        System.out.println("Mood: " + moodAnalyser2.analyserMood());
-        System.out.println("Mood: " + moodAnalyser3.analyserMood());
+        try {
+            System.out.println("Mood: " + moodAnalyser1.analyserMood());
+        }
+        catch (MoodAnalyserException e){
+            System.out.println(e.getMessage());
 
+        }
+
+        try {
+            System.out.println("Mood: " + moodAnalyser2.analyserMood());
+        }
+        catch (MoodAnalyserException e){
+            System.out.println(e.getMessage());
+
+        }
+
+        try {
+            System.out.println("Mood: " + moodAnalyser3.analyserMood());
+        }
+        catch (MoodAnalyserException e){
+            System.out.println(e.getMessage());
+
+        }
     }
 }
