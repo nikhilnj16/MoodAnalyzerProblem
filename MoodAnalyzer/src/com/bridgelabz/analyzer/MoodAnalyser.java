@@ -15,11 +15,23 @@ public class MoodAnalyser {
     public String getMessage(){
         return this.message;
     }
-    public String analyserMood(){
-        if (message.toLowerCase().contains("sad") || message.toLowerCase().contains("unhappy") || message.toLowerCase().contains("not happy")){
-            return "Sad";
-        }else{
-            return "Happy";
+    public String analyserMood() {
+        try {
+            if (message == null){
+                return "Happy";
+            }
+            if (message.isEmpty()) {
+                throw new MoodAnalyserException("Invalid mood message is empty");
+            }
+            if (message.toLowerCase().contains("sad") || message.toLowerCase().contains("unhappy") || message.toLowerCase().contains("not happy")) {
+                return "Sad";
+            } else {
+                return "Happy";
+            }
+        }
+        catch (MoodAnalyserException e){
+            return "Invalid mood message is empty";
+
         }
     }
 }
